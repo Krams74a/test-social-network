@@ -1,0 +1,19 @@
+.notification-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.notification-wrap {
+    position: absolute;
+    background-color: #f3f3f3;
+    height: 100px;
+    width: 100px;
+}
+
+.dropdown-item {
+    white-space: normal;
+}
+
+.dropdown-menu {
+    width: 300px;
+}

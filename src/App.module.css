@@ -1,0 +1,6 @@
+.content {
+    max-width: 1320px;
+    padding-right: var(--bs-gutter-x,.75rem);
+    padding-left: var(--bs-gutter-x,.75rem);
+    margin: auto;
+}

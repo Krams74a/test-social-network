@@ -1,0 +1,23 @@
+.test::after {
+    height: 0px;
+    width: 0;
+    border: none;
+    margin: 0;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+}
+
+.card-title img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.card-date span {
+    color: #818c99;
+    font-size: smaller;
+}
