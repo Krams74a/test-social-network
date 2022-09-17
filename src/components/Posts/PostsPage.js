@@ -1,34 +1,39 @@
-import React, {Component} from "react";
-import {addNewPost, addPost, deletePost, deletePostAction, getPosts} from "../../reducers/posts-reducer";
+import React, {useEffect} from "react";
+import {
+    addNewPost,
+    addPost,
+    deletePost,
+    deletePostAction,
+    dislikePost,
+    getPosts,
+    likePost
+} from "../../reducers/posts-reducer";
 import {connect} from "react-redux";
 import Post from "./Post/Post";
-import AddPost from "./AddPost/AddPost";
+import AddPost from "../Utils/AddPost/AddPost";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
-export class PostsPage extends Component {
-    componentDidMount() {
-        this.props.getPosts()
-    }
+export function PostsPage(props) {
+    useEffect(() => {
+        props.getPosts(props.loggedUserInfo.username)
+    }, [])
 
-    render() {
-        if (!this.props.postsInfo) return <div>Loading...</div>
-        return (
-            <div>
-                <h1>Посты других пользователей</h1>
-                <AddPost addPost={this.props.addPost} addNewPost={this.props.addNewPost}
-                         loggedUserInfo={this.props.loggedUserInfo}/>
-                {[...this.props.postsInfo].reverse().map(post => <Post id={post._id} key={post._id} author={post.author}
-                                                                       title={post.title}
-                                                                       content={post.content} picture={post.picture}
-                                                                       deletePost={this.props.deletePost}
-                                                                       deletePostAction={this.props.deletePostAction}
-                                                                       loggedUsername={this.props.loggedUserInfo.username}
-                                                                       authorProfile={post.authorProfile}
-                                                                       created={post.created}/>)}
-            </div>
-        )
-    }
+    if (!props.postsInfo) return <div>Loading...</div>
+    return (
+        <div>
+            <h1>Посты других пользователей</h1>
+            <AddPost addPost={props.addPost} loggedUserInfo={props.loggedUserInfo} postType={"General"} placeOfCreation={"General"}/>
+            {[...props.postsInfo].reverse().map(post => <Post id={post._id} key={post._id} author={post.author}
+                                                              title={post.title} likesCount={post.likesCount}
+                                                              content={post.content} picture={post.picture}
+                                                              deletePost={props.deletePost}
+                                                              deletePostAction={props.deletePostAction}
+                                                              loggedUsername={props.loggedUserInfo.username}
+                                                              authorProfile={post.authorProfile}
+                                                              created={post.created} postType={post.postType} likePost={props.likePost} dislikePost={props.dislikePost} likedUsers={post.likedUsers} isLiked={post.isLiked}/>)}
+        </div>
+    )
 }
 
 const mapStateToProps = (state) => {
@@ -40,7 +45,7 @@ const mapStateToProps = (state) => {
 }
 
 const PostsContainer = compose(
-    connect(mapStateToProps, {getPosts, addPost, deletePost, addNewPost, deletePostAction}),
+    connect(mapStateToProps, {getPosts, addPost, deletePost, addNewPost, deletePostAction, likePost, dislikePost}),
     withAuthRedirect
 )(PostsPage)
 

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import {Button, Card} from "react-bootstrap"
+import {Card} from "react-bootstrap"
 import {useNavigate} from "react-router";
+import SmallAvatar from "../../Avatar/User/SmallAvatar/SmallAvatar";
 
 const FriendCard = (props) => {
     const [isHovering, setIsHovering] = useState(false);
@@ -20,14 +21,21 @@ const FriendCard = (props) => {
     }
 
     return (
-        <Card style={{width: '25rem', marginBottom: "10px", backgroundColor: "#f3f3f3"}}>
+        <Card style={{width: '20rem', marginBottom: "10px", backgroundColor: "#f3f3f3"}}>
             <Card.Body>
-                    <div>
-                        Отправитель: {props.sender}
+                <Card.Title>
+                    <div style={{marginRight: "10px"}}>
+                        <SmallAvatar avatarUrl={props.avatarUrl} />
                     </div>
-                    <div>
-                        Получатель: {props.recipient}
+                    <div className={"card-title"}>
+                        <span style={{cursor: "pointer", textDecoration: isHovering ? 'underline' : '', color: "#000000"}} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} onClick={() => navigateToUser(props.username)}>
+                            {props.username}
+                        </span>
                     </div>
+                </Card.Title>
+                <Card.Text>
+                    {props.status || "Нет статуса"}
+                </Card.Text>
             </Card.Body>
         </Card>
     )

@@ -10,10 +10,11 @@ import * as Yup from "yup"
 const Register = (props) => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
+    const nameRegex = /^[A-Za-z0-9]+$/;
 
     const SignupSchema = Yup.object().shape({
         username: Yup.string()
-            .required('Обязательное поле'),
+            .required('Обязательное поле').matches(nameRegex, "Только английские буквы"),
         password: Yup.string()
             .required('Обязательное поле')
             .min(4, 'Слишком короткий пароль')

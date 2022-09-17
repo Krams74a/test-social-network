@@ -1,6 +1,9 @@
 import React, {useState} from "react";
 import {Card, Badge} from "react-bootstrap";
 import {useNavigate} from "react-router";
+import {config} from "../../../config/config";
+import AvatarPlaceholder from "../../../assets/avatar-placeholder.png";
+import SmallAvatar from "../../Avatar/User/SmallAvatar/SmallAvatar";
 
 export const User = (props) => {
     const navigate = useNavigate();
@@ -23,6 +26,9 @@ export const User = (props) => {
             <Card style={{width: '25rem', marginBottom: "10px", backgroundColor: "#f3f3f3"}}>
                 <Card.Body>
                     <Card.Title onClick={() => navigateToUser(props.username)}>
+                        <div style={{marginRight: "10px"}}>
+                            <SmallAvatar avatarUrl={props.profile.croppedAvatarUrl} />
+                        </div>
                         <span
                             style={{cursor: "pointer", textDecoration: isHovering ? 'underline' : ''}}
                             onMouseEnter={handleMouseEnter}
@@ -30,13 +36,6 @@ export const User = (props) => {
                             {props.username}
                         </span>
                     </Card.Title>
-                    <Card.Subtitle>{props.roles.map((role, id) => {
-                        if (role === "ADMIN") {
-                            return <Badge bg="primary" key={id}>{role}</Badge>
-                        } else {
-                            return <Badge bg="secondary" key={id}>{role}</Badge>
-                        }
-                    })}</Card.Subtitle>
                 </Card.Body>
             </Card>
         </div>

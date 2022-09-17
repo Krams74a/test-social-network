@@ -5,16 +5,15 @@ import {logout} from "../../reducers/auth-reducer";
 import "./Header.css"
 import {Dropdown} from "react-bootstrap";
 import React from "react";
+import {config} from "../../config/config";
 
 const Header = (props) => {
     const navigate = useNavigate()
-
-
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" style={{marginBottom: "15px"}}>
+            <Navbar collapseOnSelect expand="lg" bg={"primary"} variant="dark" style={{marginBottom: "15px"}}>
                 <Container>
-                    <Navbar.Brand as={NavLink} to={`/profile/${props.loggedUserInfo.username}`}>Test Network</Navbar.Brand>
+                    <Navbar.Brand as={NavLink} to={`/profile/${props.loggedUserInfo.username}`}>{config.header}</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
@@ -26,6 +25,8 @@ const Header = (props) => {
                                     style={{marginRight: "7px"}}>Пользователи</Button>
                             <Button onClick={() => navigate(`/friends/${props.loggedUserInfo.username}`)}
                                     className='nav-link' style={{marginRight: "7px"}}>Мои друзья</Button>
+                            <Button onClick={() => navigate(`/groups`)}
+                                    className='nav-link' style={{marginRight: "7px"}}>Группы</Button>
                         </Nav>
                         <Nav>
                             <Dropdown style={{marginRight: "5px"}}>
@@ -43,6 +44,9 @@ const Header = (props) => {
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
+
+                        </Nav>
+                        <Nav>
                             {props.isAuth ? <Button variant={"primary"} onClick={props.logout}>Выйти</Button> :
                                 <Button onClick={() => navigate('/login')}>Логин</Button>}
                         </Nav>

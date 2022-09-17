@@ -13,9 +13,13 @@ import HeaderContainer from "./components/Header/Header";
 import UsersContainer from "./components/Users/UsersPage";
 import ProfileContainer from "./components/Profile/ProfilePage";
 import {Navigate} from "react-router";
-import SettingsPageContainer from "./components/Settings/SettingsPage";
+import SettingsPageContainer from "./components/Settings/ProfileSettings/SettingsPage";
 import MessagesPageContainer from "./components/Messages/Messages";
 import FriendsPageContainer from "./components/Friends/FriendsPage";
+import GroupsPageContainer from "./components/Groups/GroupsPage";
+import GroupProfileContainer from "./components/Groups/GroupProfile/GroupProfile";
+import CreateGroupContainer from "./components/Groups/CreateGroup/CreateGroup";
+import GroupSettingsPageContainer from "./components/Settings/GroupSettings/GroupSettingsPage";
 
 class App extends React.Component {
     componentDidMount() {
@@ -40,9 +44,13 @@ class App extends React.Component {
                         <Route path='login' element={<LoginContainer/>}/>
                         <Route path='register' element={<RegisterContainer/>}/>
                         <Route path='users' element={<UsersContainer/>}/>
-                        <Route path='settings' element={<SettingsPageContainer/>}/>
+                        <Route path='settings/profile' element={<SettingsPageContainer/>}/>
+                        <Route path='settings/group/:id' element={<GroupSettingsPageContainer/>}/>
                         <Route path='messages' element={<MessagesPageContainer/>}/>
                         <Route path='friends/:id' element={<FriendsPageContainer/>}/>
+                        <Route path='groups' element={<GroupsPageContainer/>}/>
+                        <Route path='create/group' element={<CreateGroupContainer/>}/>
+                        <Route path={'groups/:id'} element={<GroupProfileContainer />} />
                     </Routes>
                 </div>
             </HashRouter>

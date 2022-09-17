@@ -8,7 +8,7 @@ const PostData = (props) => {
         const month = months[Number(createdDate.split("-")[1]) - 1]
         const day = createdDate.split("-")[2]
         const currentYear = new Date().getFullYear()
-        const currentDay = 17
+        const currentDay = new Date().getDay()
         if (currentDay - day === 1) {
             return "Вчера"
         }
@@ -23,7 +23,7 @@ const PostData = (props) => {
             }
 
         } else {
-            return day+ " " +month
+            return day + " " + month
         }
     }
 
