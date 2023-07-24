@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/test-social-network/static/css/main.1467859b.css",
-    "main.js": "/test-social-network/static/js/main.c53e70b6.js",
+    "main.css": "/test-social-network/static/css/main.17a7f66a.css",
+    "main.js": "/test-social-network/static/js/main.452c585a.js",
     "static/media/avatar-placeholder.png": "/test-social-network/static/media/avatar-placeholder.157f088b56f86d22066e.png",
     "static/media/heart-filled.png": "/test-social-network/static/media/heart-filled.e75ac1963662549a4b4f.png",
     "static/media/heart-outline.png": "/test-social-network/static/media/heart-outline.996f365b5b33089e2f48.png",
     "index.html": "/test-social-network/index.html",
-    "main.1467859b.css.map": "/test-social-network/static/css/main.1467859b.css.map",
-    "main.c53e70b6.js.map": "/test-social-network/static/js/main.c53e70b6.js.map"
+    "main.17a7f66a.css.map": "/test-social-network/static/css/main.17a7f66a.css.map",
+    "main.452c585a.js.map": "/test-social-network/static/js/main.452c585a.js.map"
   },
   "entrypoints": [
-    "static/css/main.1467859b.css",
-    "static/js/main.c53e70b6.js"
+    "static/css/main.17a7f66a.css",
+    "static/js/main.452c585a.js"
   ]
 }
